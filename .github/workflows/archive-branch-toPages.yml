@@ -1,0 +1,15 @@
+name: Archive Branch to Pages
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Archive-Branch-ToPages:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo into runner
+      - uses: actions/checkout@v6
+      # change to other branch
+      - run: git checkout gh-pages
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
