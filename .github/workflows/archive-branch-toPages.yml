@@ -11,6 +11,12 @@ jobs:
       - run: git fetch origin gh-pages
       # - run: echo "${{ github.ref_name }}"
       - run: git switch gh-pages
+      - run: | 
+              if [ -d ${{ github.ref_name }} ]; then
+                echo "Directory ${{ github.ref_name }} exists!"
+              else
+                echo "Directory ${{ github.ref_name }} does NOT exist."
+              fi
       - run: git archive --format tar ${{ github.ref_name }} -v | tar t -vf -
       - name: List files in the repository
         run: |
