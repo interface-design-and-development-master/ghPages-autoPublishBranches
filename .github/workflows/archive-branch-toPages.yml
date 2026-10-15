@@ -8,7 +8,7 @@ jobs:
       # checkout repo into runner
       - uses: actions/checkout@v6
       # change to other branch
-      - run: git checkout gh-pages
+      - run: git branch
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
