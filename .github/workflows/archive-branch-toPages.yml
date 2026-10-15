@@ -7,8 +7,10 @@ jobs:
     steps:
       # checkout repo into runner
       - uses: actions/checkout@v6
-      # change to other branch
+      # fetch pages branch
+      - run: git fetch origin gh-pages
       - run: git branch
+      - run: git switch gh-pages
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
