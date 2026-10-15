@@ -9,14 +9,16 @@ jobs:
       - uses: actions/checkout@v6
       # fetch pages branch
       - run: git fetch origin gh-pages
-      # - run: echo "${{ github.ref_name }}"
+      # switch to appropriate branch
       - run: git switch gh-pages
+      # check to see if archived branch directory already exists and create if not
       - run: | 
               if [ ! -d ${{ github.ref_name }} ]; then
                 mkdir "${{ github.ref_name }}"
               fi
-      - run: git archive --format tar ${{ github.ref_name }} -v | tar t -vf -
+      # archive files from original branch, bring them across the extract to appropriate folder
+      - run: git archive --format tar ${{ github.ref_name }} -v | tar x -vf - --directory ${{ github.ref_name }}/
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls -R ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
