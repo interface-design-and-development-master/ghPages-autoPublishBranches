@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v6
       # fetch pages branch
       - run: git fetch origin gh-pages
-      - run: git branch
+      - run: echo "${{ github.ref }}."
       - run: git switch gh-pages
       - name: List files in the repository
         run: |
