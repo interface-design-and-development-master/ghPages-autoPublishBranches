@@ -22,20 +22,8 @@ jobs:
       #  run: |
       #    ls -R ${{ github.workspace }}
       # add and commit files to the repo : from https://build5nines.com/github-actions-commit-and-push-changes-back-to-repository/
-      # check for changes
-      - name: Check for Changes
-        id: check_changes
-        run: |
-            if [[ -n "$(git diff --exit-code)" ]]; then
-              echo "Changes detected."
-              echo "::set-output name=has_changes::true"
-            else
-              echo "No changes detected."
-              echo "::set-output name=has_changes::false"
-            fi
       # Commit and Push Changes
       - name: Commit and Push Changes
-        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           # configure user
           git config --global user.name "${{ github.actor }}"
