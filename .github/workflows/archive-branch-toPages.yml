@@ -18,7 +18,11 @@ jobs:
               fi
       # archive files from original branch, bring them across the extract to appropriate folder
       - run: git archive --format tar ${{ github.ref_name }} -v | tar x -vf - --directory ${{ github.ref_name }}/
-      - name: List files in the repository
-        run: |
-          ls -R ${{ github.workspace }}
+      #- name: List files in the repository
+      #  run: |
+      #    ls -R ${{ github.workspace }}
+      # add and commit files to the repo
+      - run: git add .
+      - run: git commit -m "archived latest update from ${{ github.ref_name }} branch"
+      - run: git push
       - run: echo "🍏 This job's status is ${{ job.status }}."
