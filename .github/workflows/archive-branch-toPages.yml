@@ -12,10 +12,8 @@ jobs:
       # - run: echo "${{ github.ref_name }}"
       - run: git switch gh-pages
       - run: | 
-              if [ -d ${{ github.ref_name }} = 1 ]; then
-                echo "Directory ${{ github.ref_name }} exists!"
-              else
-                echo "Directory ${{ github.ref_name }} does NOT exist."
+              if [ ! -d ${{ github.ref_name }} ]; then
+                mkdir "${{ github.ref_name }}"
               fi
       - run: git archive --format tar ${{ github.ref_name }} -v | tar t -vf -
       - name: List files in the repository
