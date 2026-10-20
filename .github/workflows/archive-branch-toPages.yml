@@ -7,6 +7,8 @@ jobs:
     steps:
       # checkout repo into runner
       - uses: actions/checkout@v6
+        with: 
+          token: ${{secrets.GIT_TOKEN}}
       # fetch pages branch
       - run: git fetch origin gh-pages
       # switch to appropriate branch
