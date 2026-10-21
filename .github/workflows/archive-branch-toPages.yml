@@ -3,6 +3,8 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   Archive-Branch-ToPages:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       # checkout repo into runner
