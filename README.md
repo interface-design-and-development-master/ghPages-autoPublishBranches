@@ -1,5 +1,5 @@
 ## ToDo
-- sort out personal access token for org (assigning roles might not have worked)
+- sort out personal access token for org (assigning roles might not have worked, but org access override might be it)
 - exclude certain folders from cloning (.idea for example)
 - track and bring across logs
 - format logs into HTML (JSON?)
